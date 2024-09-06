@@ -1,4 +1,4 @@
-package com.oseanchen.demotest.databaseRelationDemo.entity;
+package com.oseanchen.demotest.databaseRelationDemo.dto;
 
 
 import lombok.Data;

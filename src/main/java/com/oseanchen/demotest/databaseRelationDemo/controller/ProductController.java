@@ -1,9 +1,9 @@
 package com.oseanchen.demotest.databaseRelationDemo.controller;
 
 import com.oseanchen.demotest.databaseRelationDemo.entity.Product;
-import com.oseanchen.demotest.databaseRelationDemo.entity.ProductDTO;
+import com.oseanchen.demotest.databaseRelationDemo.dto.ProductDTO;
 import com.oseanchen.demotest.databaseRelationDemo.entity.ProductDetails;
-import com.oseanchen.demotest.databaseRelationDemo.entity.ProductsDetailsDTO;
+import com.oseanchen.demotest.databaseRelationDemo.dto.ProductsDetailsDTO;
 import com.oseanchen.demotest.databaseRelationDemo.repository.ProductDetailsRepository;
 import com.oseanchen.demotest.databaseRelationDemo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,29 +36,29 @@ public class ProductController {
     }
 
 
-    @GetMapping("/productsDTO")
-    public List<ProductDTO> getProducts() {
-        List<Product> productList = productRepository.findAll();
-        List<ProductDTO> productDTOList = new ArrayList<>();
-        for (Product product : productList) {
-            ProductDTO productDTO = new ProductDTO();
-            productDTO.setId(product.getId());
-            productDTO.setName(product.getName());
-            productDTO.setPrice(product.getPrice());
-            productDTO.setDescription(product.getDescription());
-
-            ProductsDetailsDTO productDetailsDTO = new ProductsDetailsDTO();
-            productDetailsDTO.setDeveloper(product.getProductDetails().getDeveloper());
-            productDetailsDTO.setPublisher(product.getProductDetails().getPublisher());
-            productDetailsDTO.setReleaseDate(product.getProductDetails().getReleaseDate());
-            productDetailsDTO.setLanguageSupport(product.getProductDetails().getLanguageSupport());
-
-            productDTO.setProductDetail(productDetailsDTO);
-
-            productDTOList.add(productDTO);
-        }
-        return productDTOList;
-    }
+//    @GetMapping("/productsDTO")
+//    public List<ProductDTO> getProducts() {
+//        List<Product> productList = productRepository.findAll();
+//        List<ProductDTO> productDTOList = new ArrayList<>();
+//        for (Product product : productList) {
+//            ProductDTO productDTO = new ProductDTO();
+//            productDTO.setId(product.getId());
+//            productDTO.setName(product.getName());
+//            productDTO.setPrice(product.getPrice());
+//            productDTO.setDescription(product.getDescription());
+//
+//            ProductsDetailsDTO productDetailsDTO = new ProductsDetailsDTO();
+//            productDetailsDTO.setDeveloper(product.getProductDetails().getDeveloper());
+//            productDetailsDTO.setPublisher(product.getProductDetails().getPublisher());
+//            productDetailsDTO.setReleaseDate(product.getProductDetails().getReleaseDate());
+//            productDetailsDTO.setLanguageSupport(product.getProductDetails().getLanguageSupport());
+//
+//            productDTO.setProductDetail(productDetailsDTO);
+//
+//            productDTOList.add(productDTO);
+//        }
+//        return productDTOList;
+//    }
 
 
 //    @GetMapping("/productDetailsDTO")
