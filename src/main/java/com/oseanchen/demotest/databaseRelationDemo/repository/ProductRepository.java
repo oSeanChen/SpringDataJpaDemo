@@ -16,4 +16,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query("SELECT p FROM Product p JOIN FETCH p.productDetails")
     List<Product> findAllWithDetails();
+
+    Product findById(Long id);
+
+    void deleteById(Long id);
 }

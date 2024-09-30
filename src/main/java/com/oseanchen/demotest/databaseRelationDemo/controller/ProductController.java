@@ -6,10 +6,11 @@ import com.oseanchen.demotest.databaseRelationDemo.entity.ProductDetails;
 import com.oseanchen.demotest.databaseRelationDemo.dto.ProductsDetailsDTO;
 import com.oseanchen.demotest.databaseRelationDemo.repository.ProductDetailsRepository;
 import com.oseanchen.demotest.databaseRelationDemo.repository.ProductRepository;
+import com.oseanchen.demotest.databaseRelationDemo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,15 +25,30 @@ public class ProductController {
     @Autowired
     private ProductDetailsRepository productDetailsRepository;
 
+    @Autowired
+    private ProductService productService;
+
 
     @GetMapping("/products")
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
+    @GetMapping("/products/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        Product product = productService.getProdctById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(product);
+    }
+
     @GetMapping("/productDetails")
     public List<ProductDetails> getAllProductDetails() {
         return productDetailsRepository.findAll();
+    }
+
+    @PostMapping("/products")
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+        Product savedProduct = productService.saveProduct(product);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedProduct);
     }
 
 
