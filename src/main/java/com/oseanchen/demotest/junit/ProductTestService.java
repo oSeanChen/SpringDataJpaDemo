@@ -19,7 +19,11 @@ public class ProductTestService {
         return productTestDao.findById(id);
     }
 
-    public void deleteProduct(Long id) {
+    public ProductTest updateProductById(Long id, ProductTest productTest) {
+        return productTestDao.updateById(id, productTest);
+    }
+
+    public void deleteProductById(Long id) {
         productTestDao.deleteById(id);
     }
 }

@@ -15,6 +15,4 @@ public class ProductTest {
     private String name;
     private Double price;
     private String description;
-
-    // Getters and Setters
 }
